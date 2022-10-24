@@ -1,0 +1,15 @@
+[Unit]
+Description=MiniKube dashboard
+After=minikube.service
+
+[Service]
+Type=simple
+User=minikube
+ExecStart=/usr/bin/minikube dashboard --url=true
+ExecStop= /bin/kill -2 $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target

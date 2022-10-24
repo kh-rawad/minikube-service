@@ -23,9 +23,14 @@ sudo systemctl start minikube-dashboard.service
 sudo systemctl start minikube-proxy.service
 
 
-
+# @TODO await services start and minikube up and running
+while [ ! -f /opt/minikube/.minikube/ca.crt ];
+do
+    sleep 1
+done
 
 #######################################################
+mkdir ~/.minikube_service
 sudo cp /opt/minikube/.minikube/ca.crt ~/.minikube_service/
 sudo cp /opt/minikube/.minikube/profiles/minikube/client.crt ~/.minikube_service/
 sudo cp /opt/minikube/.minikube/profiles/minikube/client.key ~/.minikube_service/

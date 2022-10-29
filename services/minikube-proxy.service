@@ -1,15 +1,17 @@
+
 [Unit]
-Description=MiniKube dashboard
+Description=MiniKube proxy
 After=minikube-dashboard.service
 
 [Service]
 Type=simple
-User=minikube
+User=minikubeuser
 ExecStart=/usr/bin/minikube kubectl -- proxy --address=[::] --disable-filter=true
-ExecStop= /bin/kill -2 $MAINPID
+ExecStop= /bin/kill -2 
 KillMode=process
 Restart=on-failure
 RestartSec=42s
 
 [Install]
 WantedBy=multi-user.target
+

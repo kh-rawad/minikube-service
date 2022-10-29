@@ -4,8 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-User=minikube
+User=minikubeuser
 ExecStart=/usr/bin/minikube start
+RemainAfterExit=yes
 ExecStop=/usr/bin/minikube stop
 KillMode=process
 Restart=on-failure
